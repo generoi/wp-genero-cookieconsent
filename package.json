@@ -1,7 +1,7 @@
 {
-  "name": "wp-plugin-boilerplate",
+  "name": "wp-genero-cookieconsent",
   "version": "1.0.0",
-  "description": "A boilerplate WordPress plugin",
+  "description": "A wordpress plugin providing a cookie consent popup using Cookie Consent by Insites",
   "main": "assets/scripts/plugin.js",
   "scripts": {
     "watch": "NODE_ENV=development webpack --hide-modules --watch --config node_modules/laravel-mix/setup/webpack.config.js",

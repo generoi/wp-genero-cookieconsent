@@ -1,0 +1,93 @@
+$breakpoints: (
+  'info': 414px,
+  'opt-in': 580px,
+  'opt-out': 580px,
+);
+
+.cc-window {
+  .cc-compliance {
+    margin-left: 1rem;
+  }
+
+  .cc-btn {
+    margin-bottom: 0;
+    flex: 1 0 auto;
+
+    // Override
+    &:last-child {
+      min-width: auto;
+    }
+  }
+
+  @each $type, $breakpoint in $breakpoints {
+    &.cc-type-#{$type} {
+      .cc-compliance {
+        @media (max-width: #{$breakpoint}) {
+          margin-left: 0;
+        }
+      }
+
+      .cc-container {
+        @media (max-width: #{$breakpoint}) {
+          flex-direction: column;
+          align-items: unset;
+        }
+      }
+    }
+  }
+}
+
+.cc-container {
+  &.basic {
+    background-color: #2b2b2b;
+    padding: 1rem;
+
+    &,
+    a {
+      color: #fff;
+    }
+  }
+
+  // Be specific to override reveal classes
+  .cc-window > & {
+    max-width: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &.reveal {
+    height: auto;
+    min-height: auto;
+
+    .cc-bottom & {
+      top: auto;
+    }
+  }
+
+  &.callout {
+    .cc-bottom & {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.cc-banner.cc-theme-no-edge {
+  padding: 0;
+
+  > .reveal {
+    border: 0;
+
+    .cc-message {
+      margin-left: 0;
+    }
+  }
+}
+
+.cc-link {
+  &:active,
+  &:visited {
+    color: inherit;
+  }
+}

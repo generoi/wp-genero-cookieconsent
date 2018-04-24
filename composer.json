@@ -1,9 +1,9 @@
 {
-  "name": "generoi/wp-plugin-boilerplate",
+  "name": "generoi/wp-genero-cookieconsent",
   "type": "wordpress-plugin",
   "license": "MIT",
-  "description": "A boilerplate WordPress plugin",
-  "homepage": "https://github.com/generoi/wp-plugin-boilerplate",
+  "description": "A wordpress plugin providing a cookie consent popup using Cookie Consent by Insites",
+  "homepage": "https://github.com/generoi/wp-genero-cookieconsent",
   "authors": [
     {
       "name": "Oskar Schöldström",
@@ -14,7 +14,7 @@
     "wordpress"
   ],
   "support": {
-    "issues": "https://github.com/generoi/wp-plugin-boilerplate/issues"
+    "issues": "https://github.com/generoi/wp-genero-cookieconsent/issues"
   },
   "repositories": [
     {
@@ -32,7 +32,7 @@
   },
   "autoload": {
     "psr-4": {
-      "GeneroWP\\PluginBoilerplate\\": "src/"
+      "GeneroWP\\CookieConsent\\": "src/"
     }
   },
   "scripts": {

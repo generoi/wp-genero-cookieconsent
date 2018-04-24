@@ -4,8 +4,8 @@
  * libraries.
  */
 
-import PluginComponent from './plugin';
+import CookieConsent from './plugin';
 import objectAssign from 'es6-object-assign';
 
 objectAssign.polyfill();
-window.PluginComponent = new PluginComponent();
+window.GeneroCookieConsent = new CookieConsent();

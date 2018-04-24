@@ -1,6 +1,6 @@
 <?php
 
-namespace GeneroWP\PluginBoilerplate;
+namespace GeneroWP\CookieConsent;
 
 trait Singleton
 {
