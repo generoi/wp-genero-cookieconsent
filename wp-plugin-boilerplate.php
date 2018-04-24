@@ -17,23 +17,19 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+    require_once $composer;
+}
+
 class Plugin
 {
+    use Singleton;
 
-    private static $instance = null;
     public $version = '1.0.0';
     public $plugin_name = 'wp-plugin-boilerplate';
     public $plugin_path;
     public $plugin_url;
     public $github_url = 'https://github.com/generoi/wp-plugin-boilerplate';
-
-    public static function get_instance()
-    {
-        if (null === self::$instance) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
 
     public function __construct()
     {
@@ -86,10 +82,6 @@ class Plugin
     public static function deactivate()
     {
     }
-}
-
-if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
-    require_once $composer;
 }
 
 Plugin::get_instance();
