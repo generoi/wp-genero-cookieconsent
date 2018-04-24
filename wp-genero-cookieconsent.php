@@ -56,7 +56,6 @@ class Plugin
         add_filter('monsterinsights_track_user', [$this, 'ga_track_user']);
         // Admin pages
         add_action('acf/init', [$this, 'admin_page']);
-        add_action('acf/init', [$this, 'register_acf_fields']);
     }
 
     /**
@@ -159,6 +158,7 @@ class Plugin
                     'allow' => '<a aria-label="allow cookies" tabindex="0" class="cc-btn cc-allow button">{{allow}}</a>',
                     'deny' => '<a aria-label="deny cookies" tabindex="0" class="cc-btn cc-deny button">{{deny}}</a>',
                 ],
+                'dismissOnScroll' => 1000,
                 'position' => $this->options('position'),
                 'theme' => $this->options('theme'),
                 'location' => $this->debug ? false : $this->options('location'),
