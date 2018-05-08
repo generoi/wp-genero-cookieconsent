@@ -4,23 +4,14 @@
 
 ## Installation
 
-Besides the regular installation step you need to add the following drop-in to your `composer.json` for WP Super Cache to work:
-
-    "dropin-paths": {
-      ...
-      "web/app/plugins/wp-super-cache/plugins/": [
-        "package:generoi/wp-genero-cookieconsent:cookieconsent-supercache.php",
-        "type:wordpress-dropin"
-      ]
-    },
+Regular
 
 ## Requirements
 
-- ACF (@todo remove dependency)
+ACF is required to get an options page but if not available you can provide options using filters.
 
 ## Features
 
-- Integrates with Google Analytics for Wordpress
 - Has layouts for Foundation Reveal and Callout
 - Basic fallback for sites without Foundation
 - WP Super Cache integration
@@ -31,16 +22,6 @@ Besides the regular installation step you need to add the following drop-in to y
 ## API
 
 ```php
-// Specify a Google Analytics code (defaults to `google-analytics-for-wordpress` value)
-add_filter('wp-genero-cookieconsent/ga', function ($value) {
-  return 'UA-XXXXXX'
-});
-
-// Specify a GTM code (defaults to `google-tag-manager` value)
-add_filter('wp-genero-cookieconsent/gtm', function ($value) {
-  return 'ABC-DEFG'
-});
-
 // Modify values sent to JS.
 add_filter('wp-genero-cookieconsent/options', function ($options) {
   $options['options']['enabled'] = !WP_DEBUG;

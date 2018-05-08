@@ -40,9 +40,6 @@ class Plugin
         $this->plugin_path = plugin_dir_path(__FILE__);
         $this->plugin_url = plugin_dir_url(__FILE__);
 
-        register_activation_hook(__FILE__, [__CLASS__, 'activate']);
-        register_deactivation_hook(__FILE__, [__CLASS__, 'deactivate']);
-
         Puc_v4_Factory::buildUpdateChecker($this->github_url, __FILE__, $this->plugin_name);
 
         add_action('plugins_loaded', [$this, 'init']);
@@ -52,8 +49,6 @@ class Plugin
     {
         add_action('wp_enqueue_scripts', [$this, 'register_assets']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
-        // Google Analytics for Wordpress.
-        add_filter('monsterinsights_track_user', [$this, 'ga_track_user']);
         // Admin pages
         add_action('acf/init', [$this, 'admin_page']);
     }
@@ -132,8 +127,6 @@ class Plugin
     public function enqueue_assets()
     {
         wp_localize_script('wp-genero-cookieconsent/js/cdn', '_genero_cookieconsent', apply_filters('wp-genero-cookieconsent/options', [
-            'ga' => apply_filters('wp-genero-cookieconsent/ga', function_exists('monsterinsights_get_ua') ? monsterinsights_get_ua() : ''),
-            'gtm' => apply_filters('wp-genero-cookieconsent/gtm', get_option('google_tag_manager_id')),
             'options' => [
                 'enabled' => $this->options('enabled'),
                 'type' => $this->options('type'),
@@ -188,35 +181,7 @@ class Plugin
     }
 
     /**
-     * Google Analytics for Wordpress filter;
-     *
-     * Override not to track users when cookie consent has been denied or
-     * when using opt-in, not yet allowed.
-     *
-     * @note this requires a wp-super-cache plugin as it breaks caching.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function ga_track_user($value)
-    {
-        $isOptin = Plugin::get_instance()->options('type') === 'opt-in';
-        $cookie = $_COOKIE['cookieconsent_status'] ?? null;
-        // Optin but not yet dismissed.
-        if ($isOptin && $cookie !== 'allow') {
-            $value = false;
-        }
-        // Explicity denied
-        if ($cookie === 'deny') {
-            $value = false;
-        }
-        return $value;
-    }
-
-    /**
-     * Ensure all required plugins are available before activating.
-     *
-     * @todo add support without ACF.
+     * Load plugin textdomain.
      */
     public static function activate()
     {

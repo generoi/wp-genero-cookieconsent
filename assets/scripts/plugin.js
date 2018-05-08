@@ -19,9 +19,6 @@ class CookieConsent {
       onRevokeChoice: this.createCallback('revoke-choice'),
     }, options, wpOptions.options);
 
-    this.ga = wpOptions.ga;
-    this.gtm = wpOptions.gtm;
-    console.debug(this.options);
 
     const $document = $(document);
     $document.on('cookieconsent:status-change', this.onStatusChange.bind(this));
@@ -45,7 +42,6 @@ class CookieConsent {
 
     // Opt-In users need to allow cookies.
     if (type === 'opt-in' && status === 'allow') {
-      // This is actually managed server-side and this call is mute during opt-in.
       this.enableCookies();
     }
   }
