@@ -83,8 +83,6 @@ class Plugin
         if (!$this->options) {
             $options = [
                 'cookieconsent__enabled' => true,
-                'cookieconsent__location' => true,
-                'cookieconsent__regional_law' => true,
                 'cookieconsent__type' => 'info',
                 'cookieconsent__position' => 'bottom',
                 'cookieconsent__theme' => 'no-edge',
@@ -158,11 +156,9 @@ class Plugin
                     'allow' => '<a aria-label="allow cookies" tabindex="0" class="cc-btn cc-allow button">{{allow}}</a>',
                     'deny' => '<a aria-label="deny cookies" tabindex="0" class="cc-btn cc-deny button">{{deny}}</a>',
                 ],
-                'dismissOnScroll' => 1000,
+                'dismissOnScroll' => false,
                 'position' => $this->options('position'),
                 'theme' => $this->options('theme'),
-                'location' => $this->debug ? false : $this->options('location'),
-                'regionalLaw' => $this->debug ? false : $this->options('regional_law'),
                 'layout' => $this->options('layout'),
                 'layouts' => [
                     'basic' => '<div class="cc-container basic">{{messagelink}}{{compliance}}</div>',
