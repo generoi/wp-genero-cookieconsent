@@ -92,27 +92,12 @@ class GeneroCookieConsent {
 
   enableCookies() {
     console.debug('enable cookies');
-
-    if (this.ga) {
-      window[`ga-disable-${this.ga}`] = false;
-
-      // google-analytis-for-wordpress
-      if (window.__gaTrackerOptout) {
-        // Expire the cookie
-        document.cookie = `ga-disable-${this.ga}=true; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
-      }
-    }
   }
 
   disableCookies() {
     console.debug('disable cookies');
-    if (this.ga) {
-      window[`ga-disable-${this.ga}`] = true;
+  }
 
-      // google-analytis-for-wordpress
-      if (window.__gaTrackerOptout) {
-        window.__gaTrackerOptout();
-      }
     }
   }
 }
