@@ -114,8 +114,7 @@ class Plugin
      */
     public function register_assets()
     {
-        wp_register_script('wp-genero-cookieconsent/js/cdn', "https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/{$this->cookieconsent_version}/cookieconsent.min.js", [], null, true);
-        wp_register_style('wp-genero-cookieconsent/css/cdn', "https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/{$this->cookieconsent_version}/cookieconsent.min.css", [], null);
+        wp_register_style('wp-genero-cookieconsent/css/library', $this->plugin_url . 'dist/cookieconsent.min.css', [], $this->cookieconsent_version);
 
         wp_register_script('wp-genero-cookieconsent/js', $this->plugin_url . 'dist/main.js', ['jquery'], $this->version, true);
         wp_register_style('wp-genero-cookieconsent/css', $this->plugin_url . 'dist/main.css', [], $this->version);
@@ -126,7 +125,7 @@ class Plugin
      */
     public function enqueue_assets()
     {
-        wp_localize_script('wp-genero-cookieconsent/js/cdn', '_genero_cookieconsent', apply_filters('wp-genero-cookieconsent/options', [
+        wp_localize_script('wp-genero-cookieconsent/js', '_genero_cookieconsent', apply_filters('wp-genero-cookieconsent/options', [
             'options' => [
                 'enabled' => $this->options('enabled'),
                 'type' => $this->options('type'),
@@ -161,9 +160,8 @@ class Plugin
             ],
         ]));
 
-        wp_enqueue_script('wp-genero-cookieconsent/js/cdn');
         wp_enqueue_script('wp-genero-cookieconsent/js');
-        wp_enqueue_style('wp-genero-cookieconsent/css/cdn');
+        wp_enqueue_style('wp-genero-cookieconsent/css/library');
         wp_enqueue_style('wp-genero-cookieconsent/css');
     }
 

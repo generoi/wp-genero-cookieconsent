@@ -5,8 +5,8 @@
 
 import $ from 'jquery';
 
-class CookieConsent {
-  constructor(options = {}) {
+class GeneroCookieConsent {
+  constructor(plugin, options = {}) {
     $(window).load(this.init.bind(this));
 
     const wpOptions = window._genero_cookieconsent ? window._genero_cookieconsent : {};
@@ -19,6 +19,7 @@ class CookieConsent {
       onRevokeChoice: this.createCallback('revoke-choice'),
     }, options, wpOptions.options);
 
+    this.plugin = plugin;
 
     const $document = $(document);
     $document.on('cookieconsent:status-change', this.onStatusChange.bind(this));
@@ -27,12 +28,16 @@ class CookieConsent {
   }
 
   init() {
-    if (!window.cookieconsent) {
+    if (!this.plugin && window.cookieconsent) {
+      this.plugin = window.cookieconsent;
+    }
+
+    if (!this.plugin) {
       console.error('cookieconsent not available');
       return;
     }
 
-    window.cookieconsent.initialise(this.options);
+    this.plugin.initialise(this.options);
   }
 
   onInitialise(event, popup, status) {
@@ -112,4 +117,4 @@ class CookieConsent {
   }
 }
 
-export default CookieConsent;
+export default GeneroCookieConsent;
