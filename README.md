@@ -44,7 +44,7 @@ add_filter('wp-genero-cookieconsent/options', function ($options) {
 
 ### Google Tag Manager
 
-The events are sent as `<category>.<action>`, for example: `cookieconsent.enable`.
+The events are sent as `<category>.<action>`, for example: `cookieconsent.enabled`.
 
 ## GDPR
 
