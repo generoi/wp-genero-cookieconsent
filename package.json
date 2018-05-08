@@ -12,7 +12,10 @@
     "lint:scripts": "eslint assets/scripts",
     "lint:styles": "stylelint assets/styles/**/*.{css,scss}",
     "test": "npm run -s lint && composer test",
-    "precommit": "npm run test"
+    "precommit": "npm run test",
+    "lang": "npm run lang:pot && npm run lang:mo",
+    "lang:pot": "wp-pot --team 'Genero <developers@genero.fi>' --package 'wp-genero-cookieconsent' >| languages/wp-genero-cookieconsent.pot",
+    "lang:mo": "for file in `find . -name \"*.po\"` ; do msgfmt -o ${file/.po/.mo} $file; done"
   },
   "browserslist": [
     "last 2 versions",
@@ -149,5 +152,6 @@
   "dependencies": {
     "cookieconsent": "^3.0.6",
     "es6-object-assign": "^1.1.0",
+    "wp-pot-cli": "^1.2.1"
   }
 }

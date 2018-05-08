@@ -77,3 +77,11 @@ Build assets
 
     # Watch for changes and re-compile while developing the plugin
     npm run watch
+
+Rebuild POT files (copy to each language as `languages/wp-genero-cookieconsent-<langcode>.po` and translate it)
+
+    npm run lang:pot
+
+Compile MO files (requires `msgfmt` which is available with  `brew install gettext && brew link gettext --force`)
+
+    npm run lang:mo

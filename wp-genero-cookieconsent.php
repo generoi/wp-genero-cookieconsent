@@ -51,6 +51,7 @@ class Plugin
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
         // Admin pages
         add_action('acf/init', [$this, 'admin_page']);
+        add_action('init', [$this, 'load_textdomain']);
     }
 
     /**
@@ -59,7 +60,7 @@ class Plugin
     public function admin_page()
     {
         $option_page = acf_add_options_page([
-            'page_title' => __('CookieConsent', 'wp-genero-cookieconsent'),
+            'page_title' => 'CookieConsent',
             'parent_slug' => 'options-general.php',
             'post_id' => 'cookieconsent_options',
         ]);
@@ -181,20 +182,9 @@ class Plugin
     /**
      * Load plugin textdomain.
      */
-    public static function activate()
+    public function load_textdomain()
     {
-        foreach ([
-            'advanced-custom-fields-pro/acf.php' => 'Advanced Custom Fields PRO',
-            // 'wp-timber-extended/wp-timber-extended.php' => 'WP Timber Extended',
-        ] as $plugin => $name) {
-            if (!is_plugin_active($plugin) && current_user_can('activate_plugins')) {
-                wp_die(sprintf(
-                    __('Sorry, but this plugin requires the %s plugin to be installed and active. <br><a href="%s">&laquo; Return to Plugins</a>', 'wp-hero'),
-                    $name,
-                    admin_url('plugins.php')
-                ));
-            }
-        }
+        load_plugin_textdomain('wp-genero-cookieconsent', false, dirname(plugin_basename(__FILE__)) . '/languages');
     }
 }
 
