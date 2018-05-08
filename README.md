@@ -18,6 +18,7 @@ ACF is required to get an options page but if not available you can provide opti
 - Supports Opt in, Opt out and notice
 - Supports custom messages and button texts
 - Uses WordPress default Privacy Policy if available but can be set to a custom page.
+- Triggers events to GA and GTM
 
 ## API
 
@@ -28,6 +29,32 @@ add_filter('wp-genero-cookieconsent/options', function ($options) {
   return $options;
 });
 ```
+
+## Events
+
+### Google Analytics
+
+|category | action | label | description|
+|---------|--------|-------|------------|
+|`cookieconsent`|`init`|`dismiss/allow/deny/show`|Triggered as soon as the plugin is initialized|
+|`cookieconsent`|`enabled`||Triggered if cookies should be enabled|
+|`cookieconsent`|`disabled`||Triggered if cookies should be disabled|
+|`cookieconsent`|`revoke`|`allow/deny/dismiss`|Triggered when a choice is revoked. Label will be set to the new consent status|
+|`cookieconsent`|`click`|`allow/deny/dismiss`|Triggered when the user clicks a popup button|
+
+### Google Tag Manager
+
+The events are sent as `<category>.<action>`, for example: `cookieconsent.enable`.
+
+## GDPR
+
+|Category|Cookie|Description|
+|--------|------|-----------|
+|Strictly necessary|`cookieconsent_status`|Saves the consent status that has been given so we know what we can show the user. Has a lifetime of 1 year.|
+
+|Third pary|Type|Description|
+|----------|----|-----------|
+|-|-|-|
 
 ## Development
 

@@ -20,11 +20,13 @@ class GeneroCookieConsent {
     }, options, wpOptions.options);
 
     this.plugin = plugin;
+    this.gaTracker = window.ga || window.__gaTracker;
 
     const $document = $(document);
     $document.on('cookieconsent:status-change', this.onStatusChange.bind(this));
     $document.on('cookieconsent:revoke-choice', this.onRevokeChoice.bind(this));
     $document.on('cookieconsent:initialise', this.onInitialise.bind(this));
+    $document.on('cookieconsent:popup-open', this.onPopupOpen.bind(this));
   }
 
   init() {
@@ -34,6 +36,7 @@ class GeneroCookieConsent {
 
     if (!this.plugin) {
       console.error('cookieconsent not available');
+      this.enableCookies();
       return;
     }
 
@@ -42,19 +45,25 @@ class GeneroCookieConsent {
 
   onInitialise(event, popup, status) {
     const type = popup.options.type;
-
-    console.debug('CookieConsent: onInitialise', type, status);
+    this.track('init', status);
 
     // Opt-In users need to allow cookies.
     if (type === 'opt-in' && status === 'allow') {
       this.enableCookies();
     }
+    if (type === 'info') {
+      this.enableCookies();
+    }
+  }
+
+  onPopupOpen(/* event, popup */) {
+    this.track('init', 'show');
   }
 
   onRevokeChoice(event, popup) {
     const type = popup.options.type;
-
-    console.debug('CookieConsent: onRevokeChoice', type);
+    const status = (type === 'opt-in' ? 'deny': (type === 'opt-out' ? 'allow' : 'dismiss'));
+    this.track('revoke', status);
 
     if (type === 'opt-in') {
       this.disableCookies();
@@ -66,8 +75,7 @@ class GeneroCookieConsent {
 
   onStatusChange(event, popup, status/*, chosenBefore */) {
     const type = popup.options.type;
-
-    console.debug('CookieConsent: onStatusChange', type, status);
+    this.track('click', status);
 
     if (type === 'opt-in' && status === 'allow') {
       this.enableCookies();
@@ -75,29 +83,48 @@ class GeneroCookieConsent {
     }
     if (type === 'opt-out' && status === 'deny') {
       this.disableCookies();
+      location.reload();
     }
   }
 
   createCallback(eventName) {
     const self = this;
     return function (...args) {
-      console.log(args);
       self.triggerEvent(eventName, [this].concat(args));
     }
   }
 
   triggerEvent(eventName, args) {
+    console.debug(`CookieConsent: trigger cookieconsent:${eventName}`, args);
     $(document).trigger(`cookieconsent:${eventName}`, args);
   }
 
   enableCookies() {
-    console.debug('enable cookies');
+    this.triggerEvent('enable');
+    this.track('enabled');
   }
 
   disableCookies() {
-    console.debug('disable cookies');
+    this.triggerEvent('disable');
+    this.track('disabled');
   }
 
+  track(action, label) {
+    const category = 'cookieconsent';
+    if (window.Gevent) {
+      window.Gevent(category, action, label);
+    } else {
+      if (this.gaTracker) {
+        this.gaTracker.send('event', category, action, label);
+      }
+      if (typeof dataLayer !== 'undefined') {
+        window.dataLayer.push({
+          event: `${category}.${action}`,
+          category: category,
+          action: action,
+          label: label || '',
+        });
+      }
     }
   }
 }
