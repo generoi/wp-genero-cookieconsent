@@ -91,19 +91,19 @@ class Plugin
                 'cookieconsent__content_href' => $this->default_privacy_policy_url(),
             ];
             if (function_exists('get_fields') && ($acf = get_fields('cookieconsent_options'))) {
-                foreach ($acf as $key => $value) {
+                foreach ($acf as $_key => $value) {
                     // Empty values use defaults.
                     if (is_string($value) && !empty($value)) {
-                        $options[$key] = $value;
+                        $options[$_key] = $value;
                     } elseif (!is_string($value)) {
-                        $options[$key] = $value;
+                        $options[$_key] = $value;
                     }
                 }
             }
 
-            foreach ($options as $key => $value) {
-                $key = str_replace('cookieconsent__', '', $key);
-                $this->options[$key] = $value;
+            foreach ($options as $_key => $value) {
+                $_key = str_replace('cookieconsent__', '', $_key);
+                $this->options[$_key] = $value;
             }
         }
 
@@ -176,7 +176,7 @@ class Plugin
         if (function_exists('get_privacy_policy_url')) {
             return get_privacy_policy_url();
         }
-        return 'https://cookiesandyou.com';
+        return '';
     }
 
     /**

@@ -59,7 +59,7 @@ $breakpoints: (
 
   &.reveal {
     height: auto;
-    min-height: auto;
+    min-height: 0;
 
     .cc-bottom & {
       top: auto;
@@ -73,7 +73,7 @@ $breakpoints: (
   }
 }
 
-.cc-banner.cc-theme-no-edge {
+.cc-window.cc-theme-no-edge {
   padding: 0;
 
   > .reveal {
