@@ -4,6 +4,9 @@ $breakpoints: (
   'opt-out': 580px,
 );
 
+$black: #2b2b2b;
+$white: #fff;
+
 .cc-window {
   .cc-compliance {
     margin-left: 1rem;
@@ -37,14 +40,29 @@ $breakpoints: (
   }
 }
 
+.cc-btn {
+  border: 0;
+}
+
+.cc-revoke {
+  background-color: $black;
+  border-radius: 3px;
+
+  &,
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
 .cc-container {
   &.basic {
-    background-color: #2b2b2b;
+    background-color: $black;
     padding: 1rem;
 
     &,
     a {
-      color: #fff;
+      color: $white;
     }
   }
 

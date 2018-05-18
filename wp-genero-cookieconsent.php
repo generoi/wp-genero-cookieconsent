@@ -89,6 +89,7 @@ class Plugin
                 'cookieconsent__content_deny' => __('Decline', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_link' => __('Learn more', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_href' => $this->default_privacy_policy_url(),
+                'cookieconsent__revoke_button' => __('Cookie Policy', 'wp-genero-cookieconsent'),
             ];
             if (function_exists('get_fields') && ($acf = get_fields('cookieconsent_options'))) {
                 foreach ($acf as $_key => $value) {
@@ -149,7 +150,9 @@ class Plugin
                     'allow' => '<a aria-label="allow cookies" tabindex="0" class="cc-btn cc-allow button">{{allow}}</a>',
                     'deny' => '<a aria-label="deny cookies" tabindex="0" class="cc-btn cc-deny button">{{deny}}</a>',
                 ],
+                'revokeBtn' => '<div class="cc-revoke {{classes}}">' . $this->options('revoke_button') . '</div>',
                 'dismissOnScroll' => false,
+                'revokable' => true,
                 'position' => $this->options('position'),
                 'theme' => $this->options('theme'),
                 'layout' => $this->options('layout'),

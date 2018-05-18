@@ -54,6 +54,9 @@ class GeneroCookieConsent {
     if (type === 'info') {
       this.enableCookies();
     }
+
+    // Always show revoke button.
+    window.requestAnimationFrame(() => popup.toggleRevokeButton(true));
   }
 
   onPopupOpen(/* event, popup */) {
