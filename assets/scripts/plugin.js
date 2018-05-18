@@ -7,8 +7,6 @@ import $ from 'jquery';
 
 class GeneroCookieConsent {
   constructor(plugin, options = {}) {
-    $(window).load(this.init.bind(this));
-
     const wpOptions = window._genero_cookieconsent ? window._genero_cookieconsent : {};
 
     this.options = Object.assign({
@@ -27,6 +25,7 @@ class GeneroCookieConsent {
     $document.on('cookieconsent:revoke-choice', this.onRevokeChoice.bind(this));
     $document.on('cookieconsent:initialise', this.onInitialise.bind(this));
     $document.on('cookieconsent:popup-open', this.onPopupOpen.bind(this));
+    $document.on('ready', this.init.bind(this));
   }
 
   init() {
@@ -59,8 +58,15 @@ class GeneroCookieConsent {
     window.requestAnimationFrame(() => popup.toggleRevokeButton(true));
   }
 
-  onPopupOpen(/* event, popup */) {
+  onPopupOpen(event, popup) {
     this.track('init', 'show');
+
+    // If info, clicking anywhere gives consent.
+    if (popup.options.type === 'info' && !popup.hasAnswered()) {
+      $(document).one('mousedown keyup touchstart', 'a:not(.cc-link), button, input[type=submit]', () => {
+        popup.setStatus('dismiss');
+      });
+    }
   }
 
   onRevokeChoice(event, popup) {
@@ -77,14 +83,12 @@ class GeneroCookieConsent {
   }
 
   onStatusChange(event, popup, status/*, chosenBefore */) {
-    const type = popup.options.type;
     this.track('click', status);
 
-    if (type === 'opt-in' && status === 'allow') {
+    if (status === 'allow') {
       this.enableCookies();
-      location.reload();
     }
-    if (type === 'opt-out' && status === 'deny') {
+    if (status === 'deny') {
       this.disableCookies();
       location.reload();
     }

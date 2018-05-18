@@ -142,13 +142,13 @@ class Plugin
                 ],
                 'compliance' => [
                     'info' => '<div class="cc-compliance">{{dismiss}}</div>',
-                    'opt-in' => '<div class="cc-compliance">{{dismiss}}{{allow}}</div>',
+                    'opt-in' => '<div class="cc-compliance">{{allow}}{{deny}}</div>',
                     'opt-out' =>'<div class="cc-compliance">{{deny}}{{dismiss}}</div>',
                 ],
                 'elements' => [
                     'dismiss' => '<a aria-label="dismiss cookie message" tabindex="0" class="cc-btn cc-dismiss button">{{dismiss}}</a>',
                     'allow' => '<a aria-label="allow cookies" tabindex="0" class="cc-btn cc-allow button">{{allow}}</a>',
-                    'deny' => '<a aria-label="deny cookies" tabindex="0" class="cc-btn cc-deny button">{{deny}}</a>',
+                    'deny' => '<a aria-label="deny cookies" tabindex="0" class="cc-btn cc-deny">{{deny}}</a>',
                 ],
                 'revokeBtn' => '<div class="cc-revoke {{classes}}">' . $this->options('revoke_button') . '</div>',
                 'dismissOnScroll' => false,
