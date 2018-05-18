@@ -36,15 +36,15 @@ add_filter('wp-genero-cookieconsent/options', function ($options) {
 
 |category | action | label | description|
 |---------|--------|-------|------------|
+|`cookieconsent`|`allow`||Triggered if cookies should be enabled|
+|`cookieconsent`|`deny`||Triggered if cookies should be disabled|
 |`cookieconsent`|`init`|`dismiss/allow/deny/show`|Triggered as soon as the plugin is initialized|
-|`cookieconsent`|`enabled`||Triggered if cookies should be enabled|
-|`cookieconsent`|`disabled`||Triggered if cookies should be disabled|
 |`cookieconsent`|`revoke`|`allow/deny/dismiss`|Triggered when a choice is revoked. Label will be set to the new consent status|
 |`cookieconsent`|`click`|`allow/deny/dismiss`|Triggered when the user clicks a popup button|
 
 ### Google Tag Manager
 
-The events are sent as `<category>.<action>`, for example: `cookieconsent.enabled`.
+The events are sent as `<category>.<action>`, for example: `cookieconsent.enable`.
 
 ## GDPR
 

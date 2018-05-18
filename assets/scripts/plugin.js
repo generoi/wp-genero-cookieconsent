@@ -100,13 +100,13 @@ class GeneroCookieConsent {
   }
 
   enableCookies() {
-    this.triggerEvent('enable');
-    this.track('enabled');
+    this.triggerEvent('allow');
+    this.track('allow');
   }
 
   disableCookies() {
-    this.triggerEvent('disable');
-    this.track('disabled');
+    this.triggerEvent('deny');
+    this.track('deny');
   }
 
   track(action, label) {
