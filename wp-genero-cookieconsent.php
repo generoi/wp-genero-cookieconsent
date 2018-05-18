@@ -82,7 +82,7 @@ class Plugin
                 'cookieconsent__type' => 'info',
                 'cookieconsent__position' => 'bottom',
                 'cookieconsent__theme' => 'no-edge',
-                'cookieconsent__layout' => 'foundation-reveal',
+                'cookieconsent__layout' => 'basic',
                 'cookieconsent__content_message' => __('This website uses cookies to ensure you get the best experience on our website.', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_dismiss' => __('Got it!', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_allow' => __('Allow cookies', 'wp-genero-cookieconsent'),
