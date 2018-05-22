@@ -14,7 +14,7 @@
     "test": "npm run -s lint && composer test",
     "precommit": "npm run test",
     "lang": "npm run lang:pot && npm run lang:mo",
-    "lang:pot": "wp-pot --team 'Genero <developers@genero.fi>' --package 'wp-genero-cookieconsent' >| languages/wp-genero-cookieconsent.pot",
+    "lang:pot": "wp-pot --src '*.php' --src 'src/*.php' --team 'Genero <developers@genero.fi>' --package 'wp-genero-cookieconsent' >| languages/wp-genero-cookieconsent.pot",
     "lang:mo": "for file in `find . -name \"*.po\"` ; do msgfmt -o ${file/.po/.mo} $file; done"
   },
   "browserslist": [
