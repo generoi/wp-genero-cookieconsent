@@ -8,6 +8,8 @@ $black: #2b2b2b;
 $white: #fff;
 
 .cc-window {
+  z-index: 3000000000; // above tawk.to
+
   .cc-compliance {
     margin-left: 1rem;
     display: flex;
