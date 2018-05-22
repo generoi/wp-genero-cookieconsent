@@ -177,7 +177,7 @@ class Plugin
     public function default_privacy_policy_url()
     {
         if (function_exists('get_privacy_policy_url')) {
-            return get_privacy_policy_url();
+            return get_privacy_policy_url() . '#cookies';
         }
         return '';
     }
