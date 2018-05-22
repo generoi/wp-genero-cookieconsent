@@ -14,22 +14,26 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: wp-genero-cookieconsent.php:91
-msgid "This website uses cookies to ensure you get the best experience on our website."
-msgstr "Vi använder cookies för att ge dig bästa möjliga kundupplevelse. Om du fortsätter innebär det att du accepterar att cookies används."
+#: wp-genero-cookieconsent.php:86
+msgid "We use cookies to ensure that you get the best experience on our website. By continuing to browse the site you agree to our use of cookies."
+msgstr "Vi använder cookies för att ge dig en så bra besöksupplevelse som möjligt. Genom att fortsätta använda webbplatsen godkänner du användningen av cookies."
+
+#: wp-genero-cookieconsent.php:87
+msgid "Got it!"
+msgstr "Jag har förstått!"
+
+#: wp-genero-cookieconsent.php:88
+msgid "Allow cookies"
+msgstr "Tillåt cookies"
+
+#: wp-genero-cookieconsent.php:89
+msgid "Decline cookies"
+msgstr "Tillåt inte cookies"
+
+#: wp-genero-cookieconsent.php:90
+msgid "Read more"
+msgstr "Läs mer"
 
 #: wp-genero-cookieconsent.php:92
-msgid "Got it!"
-msgstr "Jag godkänner"
-
-#: wp-genero-cookieconsent.php:93
-msgid "Allow cookies"
-msgstr "Jag godkänner"
-
-#: wp-genero-cookieconsent.php:94
-msgid "Decline"
-msgstr "Jag godkänner inte"
-
-#: wp-genero-cookieconsent.php:95
-msgid "Learn more"
-msgstr "Läs mera"
+msgid "Cookie Policy"
+msgstr "Cookie Policy"
