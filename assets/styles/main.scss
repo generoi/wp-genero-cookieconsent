@@ -1,7 +1,7 @@
 $breakpoints: (
-  'info': 414px,
-  'opt-in': 580px,
-  'opt-out': 580px,
+  'info': 700px,
+  'opt-in': 800px,
+  'opt-out': 800px,
 );
 
 $black: #2b2b2b;
@@ -12,6 +12,10 @@ $white: #fff;
     margin-left: 1rem;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  .cc-message {
+    min-width: 300px;
   }
 
   .cc-btn {
@@ -28,6 +32,7 @@ $white: #fff;
     &.cc-type-#{$type} {
       .cc-compliance {
         @media (max-width: #{$breakpoint}) {
+          margin-top: 1rem;
           margin-left: 0;
         }
       }
