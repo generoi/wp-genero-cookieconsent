@@ -3,7 +3,7 @@
 Plugin Name:        Genero CookieConsent
 Plugin URI:         http://genero.fi
 Description:        A Cookie Consent WordPress plugin
-Version:            1.0.0
+Version:            1.0.7
 Author:             Genero
 Author URI:         http://genero.fi/
 License:            MIT License
@@ -25,7 +25,7 @@ class Plugin
 {
     use Singleton;
 
-    public $version = '1.0.0';
+    public $version = '1.0.7';
     public $cookieconsent_version = '3.0.3';
     public $plugin_name = 'wp-genero-cookieconsent';
     public $plugin_path;
