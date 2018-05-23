@@ -58,7 +58,7 @@ $white: #fff;
   border-radius: 3px;
 
   &,
-  a:not(.button) {
+  a {
     color: $white;
     text-decoration: none;
   }
@@ -70,7 +70,7 @@ $white: #fff;
     padding: 1rem;
 
     &,
-    a {
+    a:not(.button) {
       color: $white;
     }
   }
