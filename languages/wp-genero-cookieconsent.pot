@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: wp-genero-cookieconsent.php:86
-msgid "We use cookies to ensure that you get the best experience on our website. By continuing to browse the site you agree to our use of cookies."
+msgid "We respect and value your privacy. Cookies are used on our website to ensure you the best possible user experience. By continuing to browse the site you agree to our use of cookies."
 msgstr ""
 
 #: wp-genero-cookieconsent.php:87
@@ -31,7 +31,7 @@ msgid "Decline cookies"
 msgstr ""
 
 #: wp-genero-cookieconsent.php:90
-msgid "Read more"
+msgid "See our privacy policy for more information."
 msgstr ""
 
 #: wp-genero-cookieconsent.php:92

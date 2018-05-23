@@ -83,11 +83,11 @@ class Plugin
                 'cookieconsent__position' => 'bottom',
                 'cookieconsent__theme' => 'no-edge',
                 'cookieconsent__layout' => 'basic',
-                'cookieconsent__content_message' => __('We use cookies to ensure that you get the best experience on our website. By continuing to browse the site you agree to our use of cookies.', 'wp-genero-cookieconsent'),
+                'cookieconsent__content_message' => __('We respect and value your privacy. Cookies are used on our website to ensure you the best possible user experience. By continuing to browse the site you agree to our use of cookies.', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_dismiss' => __('Got it!', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_allow' => __('Allow cookies', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_deny' => __('Decline cookies', 'wp-genero-cookieconsent'),
-                'cookieconsent__content_link' => __('Read more', 'wp-genero-cookieconsent'),
+                'cookieconsent__content_link' => __('See our privacy policy for more information.', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_href' => $this->default_privacy_policy_url(),
                 'cookieconsent__revoke_button' => __('Cookie Policy', 'wp-genero-cookieconsent'),
             ];
@@ -177,7 +177,7 @@ class Plugin
     public function default_privacy_policy_url()
     {
         if (function_exists('get_privacy_policy_url')) {
-            return get_privacy_policy_url() . '#cookies';
+            return get_privacy_policy_url();
         }
         return '';
     }
