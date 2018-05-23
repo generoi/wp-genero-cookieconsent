@@ -58,7 +58,7 @@ $white: #fff;
   border-radius: 3px;
 
   &,
-  a {
+  a:not(.button) {
     color: $white;
     text-decoration: none;
   }
