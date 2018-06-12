@@ -12,6 +12,8 @@ License URI:        http://opensource.org/licenses/MIT
 namespace GeneroWP\CookieConsent;
 
 use Puc_v4_Factory;
+use GeneroWP\Common\Singleton;
+use GeneroWP\Common\Assets;
 
 if (!defined('ABSPATH')) {
     exit;
@@ -24,6 +26,7 @@ if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
 class Plugin
 {
     use Singleton;
+    use Assets;
 
     public $version = '1.0.8';
     public $cookieconsent_version = '3.0.3';
@@ -117,10 +120,10 @@ class Plugin
      */
     public function register_assets()
     {
-        wp_register_style('wp-genero-cookieconsent/css/library', $this->plugin_url . 'dist/cookieconsent.min.css', [], $this->cookieconsent_version);
+        $this->registerStyle('wp-genero-cookieconsent/css/library', 'dist/cookieconsent.min.css');
 
-        wp_register_script('wp-genero-cookieconsent/js', $this->plugin_url . 'dist/main.js', ['jquery'], $this->version, true);
-        wp_register_style('wp-genero-cookieconsent/css', $this->plugin_url . 'dist/main.css', [], $this->version);
+        $this->registerScript('wp-genero-cookieconsent/js', 'dist/main.js', ['jquery']);
+        $this->registerStyle('wp-genero-cookieconsent/css', 'dist/main.css');
     }
 
     /**
@@ -166,9 +169,9 @@ class Plugin
             ],
         ]));
 
-        wp_enqueue_script('wp-genero-cookieconsent/js');
-        wp_enqueue_style('wp-genero-cookieconsent/css/library');
-        wp_enqueue_style('wp-genero-cookieconsent/css');
+        $this->enqueueScript('wp-genero-cookieconsent/js');
+        $this->enqueueStyle('wp-genero-cookieconsent/css/library');
+        $this->enqueueStyle('wp-genero-cookieconsent/css');
     }
 
     /**
@@ -193,4 +196,4 @@ class Plugin
     }
 }
 
-Plugin::get_instance();
+Plugin::getInstance();
