@@ -90,6 +90,7 @@ class Plugin
                 'cookieconsent__content_link' => __('See our privacy policy for more information.', 'wp-genero-cookieconsent'),
                 'cookieconsent__content_href' => $this->default_privacy_policy_url(),
                 'cookieconsent__revoke_button' => __('Cookie Policy', 'wp-genero-cookieconsent'),
+                'cookieconsent__show_revoke' => false,
             ];
             if (function_exists('get_fields') && ($acf = get_fields('cookieconsent_options'))) {
                 foreach ($acf as $_key => $value) {
@@ -153,6 +154,7 @@ class Plugin
                 'revokeBtn' => '<div class="cc-revoke {{classes}}">' . $this->options('revoke_button') . '</div>',
                 'dismissOnScroll' => false,
                 'revokable' => true,
+                'alwaysShowRevoke' => $this->options('show_revoke'),
                 'position' => $this->options('position'),
                 'theme' => $this->options('theme'),
                 'layout' => $this->options('layout'),
