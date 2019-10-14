@@ -122,8 +122,8 @@ class GeneroCookieConsent {
     if (window.Gevent) {
       window.Gevent(category, action, label);
     } else {
-      if (this.gaTracker) {
-        this.gaTracker.push('send', 'event', category, action, label);
+      if (this.gaTracker && typeof this.gaTracker === 'function') {
+        this.gaTracker('send', 'event', category, action, label);
       }
       if (typeof dataLayer !== 'undefined') {
         window.dataLayer.push({
