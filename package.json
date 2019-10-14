@@ -143,11 +143,14 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-prettier": "^2.6.0",
     "husky": "^0.14.3",
-    "laravel-mix": "^1.7.2",
+    "laravel-mix": "^5.0.0",
     "prettier": "^1.12.1",
+    "sass": "^1.23.0",
+    "sass-loader": "^8.0.0",
     "stylelint": "~7.12",
     "stylelint-config-standard": "~16.0",
-    "stylelint-scss": "^1.4.4"
+    "stylelint-scss": "^1.4.4",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
     "cookieconsent": "^3.0.6",
