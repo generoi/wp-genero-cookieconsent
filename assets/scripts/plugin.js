@@ -25,7 +25,7 @@ class GeneroCookieConsent {
     $document.on('cookieconsent:revoke-choice', this.onRevokeChoice.bind(this));
     $document.on('cookieconsent:initialise', this.onInitialise.bind(this));
     $document.on('cookieconsent:popup-open', this.onPopupOpen.bind(this));
-    $document.on('ready', this.init.bind(this));
+    $document.ready(this.init.bind(this));
   }
 
   init() {
