@@ -77,6 +77,7 @@ class GeneroCookieConsent {
 
     if (type === 'opt-in') {
       this.disableCookies();
+      location.reload();
     }
     if (type === 'opt-out') {
       this.enableCookies();
