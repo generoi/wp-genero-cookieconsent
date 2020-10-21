@@ -11,9 +11,12 @@ $white: #fff;
   z-index: 3000000000; // above tawk.to
 
   .cc-compliance {
-    margin-left: 1rem;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  &.banner .cc-compliance {
+    margin-left: 1rem;
   }
 
   .cc-message {

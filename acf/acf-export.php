@@ -196,8 +196,12 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'choices' => array(
-				'top' => 'Top',
-				'bottom' => 'Bottom',
+				'top' => 'Top Banner',
+				'bottom' => 'Bottom Banner',
+				'top-left' => 'Top Left',
+				'top-right' => 'Top Right',
+				'bottom-left' => 'Bottom Left',
+				'bottom-right' => 'Bottom Right',
 			),
 			'default_value' => array(
 			),
