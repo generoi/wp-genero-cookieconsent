@@ -64,7 +64,7 @@ class GeneroCookieConsent {
 
     // If info, clicking anywhere gives consent.
     if (popup.options.type === 'info' && !popup.hasAnswered()) {
-      $(document).one('mousedown keyup touchstart', 'a:not(.cc-link), button, input[type=submit]', () => {
+      $(document).one('mousedown keyup touchstart', 'a:not(.cc-link):not(.cc-dismiss), button, input[type=submit]', () => {
         popup.setStatus('dismiss');
       });
     }
@@ -84,7 +84,8 @@ class GeneroCookieConsent {
     }
   }
 
-  onStatusChange(event, popup, status/*, chosenBefore */) {
+  onStatusChange(event, popup, status/* , chosenBefore */) {
+    const type = popup.options.type;
     this.track('click', status);
 
     if (status === 'allow') {
@@ -93,6 +94,9 @@ class GeneroCookieConsent {
     if (status === 'deny') {
       this.disableCookies();
       location.reload();
+    }
+    if (type === 'info' && status === 'dismiss') {
+      this.enableCookies();
     }
   }
 
